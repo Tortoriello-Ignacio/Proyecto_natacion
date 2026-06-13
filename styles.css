@@ -1,0 +1,711 @@
+/* =========================
+   RESET GENERAL
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #03111f, #071827, #0a2238);
+  color: #e5f6ff;
+  min-height: 100vh;
+}
+
+/* =========================
+   VARIABLES DE COLOR
+========================= */
+
+:root {
+  --bg: #01213d;
+  --card: #0d2438;
+  --card-light: #123552;
+  --primary: #0c9eca;
+  --primary-dark: #011722;
+  --secondary: #4ade80;
+  --danger: #fb7185;
+  --warning: #facc15;
+  --text: #e5f6ff;
+  --muted: #8fb3c8;
+  --border: rgba(43, 0, 0, 0.08);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(3, 17, 31, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 40px;
+}
+
+.brand h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.brand p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.main-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(37, 199, 247, 0.08);
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: rgba(37, 199, 247, 0.15);
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+
+.app-container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.section {
+  background: rgba(13, 36, 56, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  margin-bottom: 36px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  color: var(--primary);
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.section-header p {
+  color: var(--muted);
+}
+
+/* =========================
+   CARDS DASHBOARD
+========================= */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.summary-card {
+  background: linear-gradient(145deg, var(--card), var(--card-light));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px;
+  min-height: 130px;
+}
+
+.summary-card h3 {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.summary-card p {
+  color: var(--text);
+  font-size: 1.9rem;
+  font-weight: bold;
+}
+
+/* =========================
+   BARRA DE PROGRESO
+========================= */
+
+.progress-box {
+  margin-top: 26px;
+  background: #061522;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16px;
+  background: #102d45;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* =========================
+   CALENDARIO
+========================= */
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 16px;
+}
+
+.calendar-header h3 {
+  color: var(--text);
+  font-size: 1.3rem;
+}
+
+.calendar-header button,
+.history-actions button {
+  background: var(--card-light);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.calendar-header button:hover,
+.history-actions button:hover {
+  background: var(--primary);
+  color: #03111f;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-days {
+  margin-bottom: 10px;
+}
+
+.calendar-days span {
+  color: var(--muted);
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.calendar-day {
+  min-height: 110px;
+  background: #081c2c;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.calendar-day:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.calendar-day.empty {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.day-number {
+  color: var(--text);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.day-training {
+  font-size: 0.75rem;
+  padding: 6px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+.day-training.completed {
+  background: rgba(37, 199, 247, 0.18);
+  color: var(--primary);
+}
+
+.day-training.planned {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--secondary);
+}
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+.form-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  background: #081c2c;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 24px;
+}
+
+.small-form {
+  max-width: 520px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  background: #03111f;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 199, 247, 0.15);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.primary-btn {
+  width: fit-content;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #03111f;
+  border: none;
+  border-radius: 14px;
+  padding: 13px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 199, 247, 0.25);
+}
+
+/* =========================
+   HISTORIAL
+========================= */
+
+.history-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.training-list {
+  display: grid;
+  gap: 16px;
+}
+
+.training-item {
+  background: #081c2c;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.training-info h3 {
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.training-info p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.training-status {
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.training-status.completed {
+  background: rgba(37, 199, 247, 0.18);
+  color: var(--primary);
+}
+
+.training-status.planned {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--secondary);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: min(560px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  position: relative;
+}
+
+.modal-content h2 {
+  color: var(--primary);
+  margin-bottom: 18px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+#modalBody p {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-card {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-day {
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 18px 20px;
+  }
+
+  .brand h1 {
+    font-size: 1.6rem;
+  }
+
+  .main-nav {
+    gap: 8px;
+  }
+
+  .main-nav a {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
+
+  .app-container {
+    width: 94%;
+    padding: 26px 0;
+  }
+
+  .section {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-header {
+    flex-direction: column;
+  }
+
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .calendar-day {
+    min-height: 76px;
+    padding: 7px;
+    border-radius: 12px;
+  }
+
+  .day-training {
+    font-size: 0.65rem;
+    padding: 4px;
+  }
+
+  .training-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+}
+/* =========================
+   NUEVA VISUAL ACUÁTICA
+========================= */
+
+:root {
+  --bg: #020817;
+  --card: #071827;
+  --card-light: #0b2a42;
+  --primary: #38bdf8;
+  --primary-dark: #0284c7;
+  --secondary: #2dd4bf;
+  --accent: #818cf8;
+  --danger: #fb7185;
+  --warning: #facc15;
+  --text: #e0f7ff;
+  --muted: #91b8ca;
+  --border: rgba(56, 189, 248, 0.22);
+  --border-strong: rgba(45, 212, 191, 0.45);
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(45, 212, 191, 0.12), transparent 35%),
+    linear-gradient(135deg, #020817, #061525, #081c2c);
+}
+
+.app-header {
+  background: rgba(2, 8, 23, 0.92);
+  border-bottom: 1px solid var(--border-strong);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.08);
+}
+
+.section {
+  background: linear-gradient(145deg, rgba(7, 24, 39, 0.92), rgba(8, 34, 54, 0.88));
+  border: 1px solid var(--border);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.section:hover {
+  border-color: var(--border-strong);
+}
+
+.summary-card,
+.form-card,
+.training-item,
+.calendar-day,
+.progress-box,
+.modal-content {
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(7, 24, 39, 0.95), rgba(11, 42, 66, 0.92));
+}
+
+.summary-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 2px solid rgba(56, 189, 248, 0.45);
+  opacity: 0.8;
+}
+
+.summary-card p {
+  color: var(--primary);
+}
+
+.swimmer-card p {
+  color: var(--secondary);
+}
+
+.main-nav a {
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.main-nav a:hover {
+  background: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.2);
+}
+
+input,
+select,
+textarea {
+  background: rgba(2, 8, 23, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: #020817;
+}
+
+.calendar-day:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 0 18px rgba(45, 212, 191, 0.16);
+}
+
+.day-training.completed {
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.day-training.planned {
+  background: rgba(45, 212, 191, 0.14);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+}
+
+/* =========================
+   REPERTORIO DE RUTINAS
+========================= */
+
+.routine-library {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.routine-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.routine-card {
+  background: linear-gradient(145deg, rgba(7, 24, 39, 0.96), rgba(11, 42, 66, 0.9));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.routine-card h3 {
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.routine-card p {
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.routine-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.routine-meta span {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--text);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.routine-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}

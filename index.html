@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rutinas de Natación</title>
+
+  <!-- Archivo CSS -->
+  <link rel="icon" type="image/png" href="Nemo/Nemo.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER PRINCIPAL -->
+  <header class="app-header">
+    <div class="brand">
+      <h1>Entrenamiento Natación</h1>
+      <p>Planificación y seguimiento</p>
+    </div>
+
+    <nav class="main-nav">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#calendar">Calendario</a>
+      <a href="#add-training">Cargar entrenamiento</a>
+      <a href="#planning">Planificación</a>
+      <a href="#history">Historial</a>
+      <a href="#goals">Objetivos</a>
+      <a href="#stats">Estadísticas</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="app-container">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section">
+      <div class="section-header">
+        <h2>Seguimiento</h2>
+        <p>Resumen general de tu progreso semanal.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="summary-card">
+          <h3>Metros esta semana</h3>
+          <p id="weeklyMeters">0 m</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>Objetivo semanal</h3>
+          <p id="weeklyGoal">9000 m</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>Entrenamientos completados</h3>
+          <p id="completedTrainings">0</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>RPE promedio</h3>
+          <p id="averageRpe">0</p>
+        </article>
+      </div>
+
+      <div class="progress-box">
+        <div class="progress-info">
+          <span>Progreso semanal</span>
+          <span id="progressPercentage">0%</span>
+        </div>
+
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALENDARIO -->
+    <section id="calendar" class="section">
+      <div class="section-header">
+        <h2>Calendario mensual</h2>
+        <p>Visualizá tus entrenamientos realizados y planificados.</p>
+      </div>
+
+      <div class="calendar-header">
+        <button id="prevMonthBtn" type="button">Anterior</button>
+        <h3 id="currentMonth">Junio 2026</h3>
+        <button id="nextMonthBtn" type="button">Siguiente</button>
+      </div>
+
+      <div class="calendar-grid calendar-days">
+        <span>Lun</span>
+        <span>Mar</span>
+        <span>Mié</span>
+        <span>Jue</span>
+        <span>Vie</span>
+        <span>Sáb</span>
+        <span>Dom</span>
+      </div>
+
+      <div id="calendarGrid" class="calendar-grid">
+        <!-- Los días del calendario se van a generar con JavaScript -->
+      </div>
+    </section>
+
+    <!-- CARGAR ENTRENAMIENTO REALIZADO -->
+    <section id="add-training" class="section">
+      <div class="section-header">
+        <h2>Cargar entrenamiento</h2>
+        <p>Registrá una sesión de natación que ya realizaste.</p>
+      </div>
+
+      <form id="completedTrainingForm" class="form-card">
+        <div class="form-group">
+          <label for="completedDate">Fecha</label>
+          <div class="form-group">
+  <label for="completedSwimmer">Nadador/a</label>
+  <select id="completedSwimmer" required>
+    <option value="">Seleccionar nadador/a</option>
+    <option value="Rocío">Rocío</option>
+    <option value="Ignacio">Ignacio</option>
+          <input type="date" id="completedDate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="completedMeters">Metros nadados</label>
+          <input type="number" id="completedMeters" min="0" placeholder="Ej: 3000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="completedDuration">Duración en minutos</label>
+          <input type="number" id="completedDuration" min="0" placeholder="Ej: 90" required />
+        </div>
+
+        <div class="form-group">
+          <label for="completedRpe">RPE alcanzado</label>
+          <select id="completedRpe" required>
+            <option value="">Seleccionar RPE</option>
+            <option value="1">1 - Muy liviano</option>
+            <option value="2">2</option>
+            <option value="3">3 - Liviano</option>
+            <option value="4">4</option>
+            <option value="5">5 - Moderado</option>
+            <option value="6">6</option>
+            <option value="7">7 - Intenso</option>
+            <option value="8">8</option>
+            <option value="9">9 - Muy intenso</option>
+            <option value="10">10 - Máximo esfuerzo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="completedType">Tipo de entrenamiento</label>
+          <select id="completedType" required>
+            <option value="">Seleccionar tipo</option>
+            <option value="Resistencia">Resistencia</option>
+            <option value="Técnica">Técnica</option>
+            <option value="Velocidad">Velocidad</option>
+            <option value="Patada">Patada</option>
+            <option value="Fuerza">Fuerza</option>
+            <option value="Recuperación">Recuperación</option>
+            <option value="Mixto">Mixto</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="completedNotes">Notas</label>
+          <textarea id="completedNotes" rows="4" placeholder="Ej: Buen ritmo, últimos 500 metros fuertes..."></textarea>
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Guardar entrenamiento
+        </button>
+      </form>
+      <div class="routine-library">
+  <div class="section-header">
+    <h2>Rutinas</h2>
+    <p>Guardá rutinas preparadas para usarlas después en la planificación.</p>
+  </div>
+
+  <form id="routineForm" class="form-card">
+    <div class="form-group">
+      <label for="routineName">Nombre de la rutina</label>
+      <input type="text" id="routineName" placeholder="Ej: Fondo aeróbico 3000m" required />
+    </div>
+
+    <div class="form-group">
+      <label for="routineSwimmer">Nadador/a sugerido</label>
+      <select id="routineSwimmer" required>
+        <option value="">Seleccionar nadador/a</option>
+        <option value="Rocío">Rocío</option>
+        <option value="Ignacio">Ignacio</option>
+        <option value="Ambos">Ambos</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="routineMeters">Metros totales</label>
+      <input type="number" id="routineMeters" min="0" placeholder="Ej: 3000" required />
+    </div>
+
+    <div class="form-group">
+      <label for="routineType">Tipo de rutina</label>
+      <select id="routineType" required>
+        <option value="">Seleccionar tipo</option>
+        <option value="Resistencia">Resistencia</option>
+        <option value="Técnica">Técnica</option>
+        <option value="Velocidad">Velocidad</option>
+        <option value="Patada">Patada</option>
+        <option value="Fuerza">Fuerza</option>
+        <option value="Recuperación">Recuperación</option>
+        <option value="Mixto">Mixto</option>
+      </select>
+    </div>
+
+    <div class="form-group full-width">
+      <label for="routineDescription">Descripción de la rutina</label>
+      <textarea id="routineDescription" rows="5" placeholder="Ej: 400 entrada en calor + 8x100 ritmo medio + 6x50 fuerte + 200 suave" required></textarea>
+    </div>
+
+    <button type="submit" class="primary-btn">
+      Guardar rutina en repertorio
+    </button>
+  </form>
+
+  <div id="routineList" class="routine-list">
+    <!-- Las rutinas guardadas se cargan con JavaScript -->
+  </div>
+</div>
+    </section>
+
+    <!-- PLANIFICACIÓN -->
+    <section id="planning" class="section">
+      <div class="section-header">
+        <h2>Planificación</h2>
+        <p>Agendá entrenamientos futuros.</p>
+      </div>
+
+      <form id="plannedTrainingForm" class="form-card">
+        <div class="form-group full-width">
+  <label for="routineSelect">Usar rutina del repertorio</label>
+  <select id="routineSelect">
+    <option value="">Seleccionar rutina guardada</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="plannedSwimmer">Nadador/a</label>
+  <select id="plannedSwimmer" required>
+    <option value="">Seleccionar nadador/a</option>
+    <option value="Rocío">Rocío</option>
+    <option value="Ignacio">Ignacio</option>
+  </select>
+</div>
+        <div class="form-group">
+          <label for="plannedDate">Fecha planificada</label>
+          <input type="date" id="plannedDate" required />
+        </div>
+
+        <div class="form-group">
+          <label for="plannedMeters">Metros previstos</label>
+          <input type="number" id="plannedMeters" min="0" placeholder="Ej: 2500" required />
+        </div>
+
+        <div class="form-group">
+          <label for="plannedType">Tipo de entrenamiento</label>
+          <select id="plannedType" required>
+            <option value="">Seleccionar tipo</option>
+            <option value="Resistencia">Resistencia</option>
+            <option value="Técnica">Técnica</option>
+            <option value="Velocidad">Velocidad</option>
+            <option value="Patada">Patada</option>
+            <option value="Fuerza">Fuerza</option>
+            <option value="Recuperación">Recuperación</option>
+            <option value="Mixto">Mixto</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="plannedObjective">Objetivo del día</label>
+          <input type="text" id="plannedObjective" placeholder="Ej: Mejorar ritmo de 100m" />
+        </div>
+
+        <div class="form-group full-width">
+          <label for="plannedNotes">Notas</label>
+          <textarea id="plannedNotes" rows="4" placeholder="Ej: Hacer foco en técnica de respiración..."></textarea>
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Guardar planificación
+        </button>
+      </form>
+    </section>
+
+    <!-- HISTORIAL -->
+    <section id="history" class="section">
+      <div class="section-header">
+        <h2>Historial</h2>
+        <p>Listado de entrenamientos cargados y planificados.</p>
+      </div>
+
+      <div class="history-actions">
+        <button id="showAllBtn" type="button">Todos</button>
+        <button id="showCompletedBtn" type="button">Realizados</button>
+        <button id="showPlannedBtn" type="button">Planificados</button>
+      </div>
+
+      <div id="trainingList" class="training-list">
+        <!-- Los entrenamientos se van a insertar con JavaScript -->
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section id="goals" class="section">
+      <div class="section-header">
+        <h2>Objetivos</h2>
+        <p>Configurá tus metas de entrenamiento.</p>
+      </div>
+
+      <form id="goalForm" class="form-card small-form">
+        <div class="form-group">
+          <label for="weeklyGoalInput">Objetivo semanal en metros</label>
+          <input type="number" id="weeklyGoalInput" min="0" value="9000" required />
+        </div>
+
+        <button type="submit" class="primary-btn">
+          Actualizar objetivo
+        </button>
+      </form>
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section id="stats" class="section">
+      <div class="section-header">
+        <h2>Estadísticas</h2>
+        <p>Análisis básico de tu rendimiento.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="summary-card swimmer-card">
+        <h3>Rocío esta semana</h3>
+     <p id="rocioWeeklyMeters">0 m</p>
+</article>
+
+        <article class="summary-card swimmer-card">
+        <h3>Ignacio esta semana</h3>
+     <p id="ignacioWeeklyMeters">0 m</p>
+</article>
+        <article class="summary-card">
+          <h3>Total mensual</h3>
+          <p id="monthlyMeters">0 m</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>Promedio por sesión</h3>
+          <p id="averageMeters">0 m</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>Entrenamiento más largo</h3>
+          <p id="longestTraining">0 m</p>
+        </article>
+
+        <article class="summary-card">
+          <h3>Sesiones del mes</h3>
+          <p id="monthlySessions">0</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL / DETALLE DE ENTRENAMIENTO -->
+  <div id="trainingModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModalBtn" class="close-btn" type="button">×</button>
+
+      <h2>Detalle del entrenamiento</h2>
+
+      <div id="modalBody">
+        <!-- El detalle se carga con JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHIVO JAVASCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
