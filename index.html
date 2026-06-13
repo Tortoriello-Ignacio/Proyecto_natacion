@@ -8,6 +8,10 @@
 
   <title>Rutinas de Natación</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Archivo CSS -->
   <link rel="icon" type="image/png" href="Nemo/Nemo.jpg" />
   <link rel="stylesheet" href="styles.css" />
@@ -22,14 +26,34 @@
     </div>
 
     <nav class="main-nav">
-      <a href="#dashboard">Dashboard</a>
-      <a href="#calendar">Calendario</a>
-      <a href="#add-training">Cargar entrenamiento</a>
-      <a href="#planning">Planificación</a>
-      <a href="#history">Historial</a>
-      <a href="#goals">Objetivos</a>
-      <a href="#stats">Estadísticas</a>
-    </nav>
+  <a href="#dashboard" class="nav-essential">
+    <span class="nav-full">Dashboard</span>
+    <span class="nav-short">Inicio</span>
+  </a>
+
+  <a href="#calendar" class="nav-essential">
+    <span class="nav-full">Calendario</span>
+    <span class="nav-short">Calendario</span>
+  </a>
+
+  <a href="#add-training" class="nav-essential">
+    <span class="nav-full">Cargar entrenamiento</span>
+    <span class="nav-short">Cargar</span>
+  </a>
+
+  <a href="#planning" class="nav-essential">
+    <span class="nav-full">Planificación</span>
+    <span class="nav-short">Plan</span>
+  </a>
+
+  <a href="#history" class="nav-essential">
+    <span class="nav-full">Historial</span>
+    <span class="nav-short">Historial</span>
+  </a>
+
+  <a href="#goals" class="nav-optional">Objetivos</a>
+  <a href="#stats" class="nav-optional">Estadísticas</a>
+</nav>
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
