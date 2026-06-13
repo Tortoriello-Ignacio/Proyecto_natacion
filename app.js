@@ -712,3 +712,19 @@ function refreshApp() {
 // =============================
 
 refreshApp();
+
+// =============================
+// HEADER COMPACTO AL HACER SCROLL
+// =============================
+
+function handleCompactHeader() {
+  if (window.scrollY > 80) {
+    document.body.classList.add("compact-header");
+  } else {
+    document.body.classList.remove("compact-header");
+  }
+}
+
+window.addEventListener("scroll", handleCompactHeader);
+
+handleCompactHeader();
